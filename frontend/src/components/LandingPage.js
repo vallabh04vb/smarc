@@ -6,6 +6,7 @@ import Calendar from './Calendar';
 import Pricing from './Pricing';
 import Welcome from './Welcome';
 import About from './About';
+import Footer from './Footer';
 const LandingPage = () => {
   return (
   <>
@@ -16,6 +17,7 @@ const LandingPage = () => {
       <Pricing />
       <Welcome />
       <About />
+      <Footer/>
   </>
   )
 }

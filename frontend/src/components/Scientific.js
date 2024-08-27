@@ -1,5 +1,7 @@
 import React , {useState} from 'react'
-import Calendar from './Calendar';
+
+import Calendar2 from './Calendar2';
+import Footer from './Footer';
 
 
 const scientificData = [
@@ -53,7 +55,14 @@ const Scientific = () => {
       
         return (
           <div className='mt-20'>
-            <div className="hero bg-[#1d3459] text-white py-16">
+               <div >
+        <img
+          src='/image/landing/3.png'
+          alt='SMARC 2024 Banner'
+          className='w-full'
+        />
+      </div>
+            <div className="hero bg-[#1d3459] text-white py-12">
               <h1 className="text-4xl font-bold text-center">SCIENTIFIC ACTIVITIES</h1>
             </div>
       
@@ -85,7 +94,8 @@ const Scientific = () => {
               ))}
       
             </div>
-            <Calendar/>
+            <Calendar2/>
+            <Footer/>
           </div>
         );
       };

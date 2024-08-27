@@ -1,5 +1,6 @@
 import React , {useState} from 'react'
-import Calendar from './Calendar';
+import Calendar2 from './Calendar2';
+import Footer from './Footer';
 
 const culturalsData = [
     {
@@ -54,11 +55,18 @@ const Culturals = () => {
   
     return (
       <div className='mt-20'>
+         <div >
+        <img
+          src='/image/landing/2.png'
+          alt='SMARC 2024 Banner'
+          className='w-full'
+        />
+      </div>
         <div className="hero bg-[#1d3459] text-white py-16">
           <h1 className="text-4xl font-bold text-center">CULTURALS</h1>
         </div>
   
-        <div className="container mx-auto p-6">
+        <div className="container mx-auto p-4">
           <h2 className="text-2xl font-bold mb-4 text-[#1d3459]">Cultural Activities at SMARC</h2>
           <p className="mb-4">
             Yay! Let's talk about cultural activities in SMARC! SMARC has a vibrant cultural scene, providing students with a much-needed break from their rigorous academic schedules. These activities help foster creativity, teamwork, and stress relief.
@@ -97,7 +105,8 @@ const Culturals = () => {
           <h3 className="text-lg font-bold mb-4">Previous Event Gallery</h3>
           <p className="mb-4">Photos will be provided which can be updated on the go!</p>
         </div>
-       <Calendar/>
+      <Calendar2/>
+      <Footer/>
       </div>
     );
   };
