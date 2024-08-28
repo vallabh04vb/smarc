@@ -9,9 +9,7 @@ const Event = () => {
 
   return (
     <div className='bg-[#1D3459] flex flex-col items-center justify-center p-6 max-w-md mx-auto text-white'>
-      <h2 className='text-2xl font-bold text-[#F79E32] mb-4'>
-        EVENT OVERVIEW
-      </h2>
+      <h2 className='text-2xl font-bold text-[#F79E32] mb-4'>EVENT OVERVIEW</h2>
 
       <div className='mb-6'>
         <div className='flex items-center mb-4'>
@@ -69,22 +67,24 @@ const Event = () => {
               clipRule='evenodd'
             />
           </svg>
-          View Schedule
+          FAQs
         </button>
         <button className='bg-[#F79E32] text-navy-800 w-full p-3 py-2 rounded-2xl font-bold flex items-center justify-center'>
-          <svg
-            className='w-5 h-5 mr-2'
-            fill='currentColor'
-            viewBox='0 0 20 20'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              fillRule='evenodd'
-              d='M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z'
-              clipRule='evenodd'
-            />
-          </svg>
-          Event Brochure
+          <a href='/pdf/event.pdf' className='flex items-center justify-center'>
+            <svg
+              className='w-5 h-5 mr-2'
+              fill='currentColor'
+              viewBox='0 0 20 20'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                fillRule='evenodd'
+                d='M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z'
+                clipRule='evenodd'
+              />
+            </svg>
+            Event Brochure
+          </a>
         </button>
       </div>
     </div>

@@ -996,30 +996,30 @@ const RegisterNowSection = () => {
                   </p>
                 </div>
               </div>
+              <div className='mt-20 bg-[#1d3459]'>
+                <div className='mt-20 p-5'>
+                  <div>
+                    <label
+                      htmlFor='college'
+                      className='block text-sm font-medium text-gray-800 text-white'
+                    >
+                      Are you a ?
+                    </label>
+                    <Select
+                      name='profession'
+                      id='profession'
+                      options={professionOptions}
+                      value={profession}
+                      onChange={(e) => setProfession(e.value)}
+                      className='mt-1 text-gray-800 block w-100'
+                      placeholder='Select your profession'
+                      isSearchable
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-            // </div>
-            // <div className="mt-20 bg-[#1d3459]">
-            //   <div className="mt-20 p-5">
-            //     <div>
-            //       <label
-            //         htmlFor="college"
-            //         className="block text-sm font-medium text-gray-800 text-white"
-            //       >
-            //         Are you a ?
-            //       </label>
-            //       <Select
-            //         name="profession"
-            //         id="profession"
-            //         options={professionOptions}
-            //         value={profession}
-            //         onChange={(e) => setProfession(e.value)}
-            //         className="mt-1 text-gray-800 block w-100"
-            //         placeholder="Select your profession"
-            //         isSearchable
-            //         required
-            //       />
-            //     </div>
-            //   </div>
             // </div>
           )}
         </>
