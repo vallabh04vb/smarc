@@ -1,22 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import ImageCarousel from './ImageCarousel';
 
 const HeroSection = () => {
-
+  const images = [
+  '/image/banner.png',
+  '/image/c1.jpg',
+  '/image/c3.jpg',
+  ];
   const navigate = useNavigate();
   return (
     <section className='pt-20 bg-[#1D3459] text-white min-h-screen flex flex-col justify-center items-center p-6'>
       <p className='text-sm text-[#ee9d06] font-bold uppercase tracking-wider mt-4 mb-4 text-center'>
         8th Annual Life Science Conference
       </p>
-      <div className='mb-6'>
-        <img
-          src='/image/banner.png'
-          alt='SMARC 2024 Banner'
-          className='w-full max-w-xs mx-auto'
-        />
-      </div>
+      <div className='m-2'>
+       <ImageCarousel images={images}  className="w-10 h-20 p-2 m-2" />
+    </div>
       <div className='text-center flex flex-col justify-center items-center font-bold'>
         <p className='bg-[#ee9d06] text-[#1D3459] font-bold px-2 py-1 text-xs uppercase tracking-wide rounded-sm mb-4'>
           Southern Medicos Annual Research Conference

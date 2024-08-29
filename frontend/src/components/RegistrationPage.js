@@ -31,356 +31,556 @@ const RegisterNowSection = () => {
     false,
   ]); // For each scientific activity
   const [step, setStep] = useState(true);
+  const [selectedActivity, setSelectedActivity] = useState(null); // To store the selected activity
+  const [isDialogOpen, setIsDialogOpen] = useState(false); // To manage the dialog visibility
   const activities = [
     //culturals
     //sit back and relax
     {
       day: 1,
-      session: 'Morning',
+      session: "Morning",
       id: 1,
-      name: 'Flash Mob',
-      price: 'Free',
-      description: 'Covered under basic registration fees',
-      image: '/image/culturals/Flash_Mob.png',
+      name: "Flash Mob",
+      price: "Free",
+      description: "Covered under basic registration fees",
+      image: "/image/culturals/Flash_Mob.png",
+      
     },
     {
       day: 1,
-      session: 'Morning',
+      session: "Morning",
       id: 2,
-      name: 'Surprise Night',
-      price: 'Free',
-      description: 'Covered under basic registration fees',
-      image: '/image/culturals/Surprise_Night.png',
+      name: "Surprise Night",
+      price: "Free",
+      description: "Covered under basic registration fees",
+      image: "/image/culturals/Surprise_Night.png",
+     
     },
     {
       day: 1,
-      session: 'Morning',
+      session: "Morning",
       id: 3,
-      name: 'Celebrity Night',
-      price: 'Free',
-      description: 'Covered under basic registration fees',
-      image: '/image//culturals/Celebrity_Night.png',
+      name: "Celebrity Night",
+      price: "Free",
+      description: "Covered under basic registration fees",
+      image: "/image//culturals/Celebrity_Night.png",
     },
+    {
+      day: 2,
+      session: "Morning",
+      id: 4,
+      name: "DJ Night",
+      price: "Free",
+      description: "Covered under basic registration fees",
+      image: "/image/culturals/DJ_Night.png",
+    },
+    {
+      day: 2,
+      session: "Morning",
+      id: 5,
+      name: "Med Fun",
+      price: "Free",
+      description: "Covered under basic registration fees",
+      image: "/image/culturals/Med_Fun.png",
+    },
+    {
+      day: 2,
+      session: "Morning",
+      id: 6,
+      name: "Fashion Parade",
+      price: "Free",
+      description: "Select the following to register for this particular competition",
+      image: "/image/culturals/Fashion_Parade.png",
+    },
+    //compititions in culturals
+    {
+      day: 2,
+      session: "Morning",
+      id: 7,
+      name: "Dance Competition",
+      price: "Free",
+      description: "Select the following to register for this particular competition",
+      image: "/image/culturals/Dance_Competition.png",
+    },
+    {
+      day: 2,
+      session: "Morning",
+      id: 8,
+      name: "Singing Competition",
+      price: "Free",
+      description: "Select the following to register for this particular competition",
+      image: "/image//culturals/Singing_Competition.png",
+    },
+    {
+      day: 2,
+      session: "Morning",
+      id: 9,
+      name: "Photo Contest",
+      price: "Free",
+      description: "Select the following to register for this particular competition",
+      image: "/image//culturals/Photo_Contest.png",
+    },
+    {
+      day: 2,
+      session: "Morning",
+      id: 10,
+      name: "Shortfilm Competition",
+      price: "Free",
+      description: "Select the following to register for this particular competition",
+      image: "/image//culturals/Shortfilm_Competition.png",
+    },
+    {
+      day: 3,
+      session: "Morning",
+      id: 11,
+      name: "Playing an Instrument",
+      price: "Free",
+      description: "Select the following to register for this particular competition",
+      image: "/image/culturals/Playing_an_Instrument.png",
+    },
+    {
+      day: 3,
+      session: "Morning",
+      id: 12,
+      name: "Cooking without Fire",
+      price: "₹99/-",
+      description: "Select the following to register for this particular competition",
+      image: "/image/culturals/Cooking_without_Fire.png",
+    },
+    {
+      day: 3,
+      session: "Morning",
+      id: 13,
+      name: "Beat Box",
+      price: "Free",
+      description: "Select the following to register for this particular competition",
+      image: "/image/culturals/Beat_Box.png",
+    },
+    {
+      day: 3,
+      session: "Morning",
+      id: 14,
+      name: "Arts Competition 1",
+      price: "Free",
+      description: "Select the following to register for this particular competition",
+      image: "/image/culturals/Arts_Competition.png",
+    },
+    {
+      day: 3,
+      session: "Morning",
+      id: 15,
+      name: "Arts Competition 2",
+      price: "Free",
+      description: "Select the following to register for this particular competition",
+      image: "/image/culturals/Arts_Competition.png",
+    },
+  
   ];
   const Scientific_activities = [
     {
       day: 1,
-      session: 'Morning',
-      name: 'Gynaecology 1',
-      price: '₹899/-',
-      description: 'Another slot available',
-      image: '/image/scientific/Gynaecology.png', // Assuming the image file name for Gynaecology 1
+      session: "Morning",
+      name: "Gynaecology 1",
+      price: "₹899/-",
+      description: "Another slot available",
+      image: "/image/scientific/Gynaecology.png",
+      id: 1,
+      exception: [2]
     },
     {
       day: 1,
-      session: 'Morning',
-      name: 'BPCS 1',
-      price: '₹799/-',
-      description: 'Another slot available',
-      image: '/image/scientific/BPCS.png', // Assuming the image file name for BPCS 1
+      session: "Morning",
+      name: "BPCS 1",
+      price: "₹799/-",
+      description: "Another slot available",
+      image: "/image/scientific/BPCS.png",
+      id: 2,
+      content:"Basic procedural clinical skills Dive into the practical side of medicine with our workshop on procedural clinical skills, covering heart sounds, ascitic fluid removal, and lumbar puncture techniques. Ideal for anyone interested in developing a solid foundation in clinical procedures."
+      
     },
     {
       day: 1,
-      session: 'Morning',
-      name: 'ENT',
-      price: '₹499/-',
-      description: 'Single slot available',
-      image: '/image/scientific/ENT.png', // Assuming the image file name for ENT
+      session: "Morning",
+      name: "ENT",
+      price: "₹499/-",
+      description: "Single slot available",
+      image: "/image/scientific/ENT.png",
+      id: 3
     },
     {
       day: 1,
-      session: 'Morning',
-      name: 'ECG',
-      price: '₹199/-',
-      description: 'Single slot available',
-      image: '/image/scientific/ECG.png', // Assuming the image file name for ECG
+      session: "Morning",
+      name: "ECG",
+      price: "₹199/-",
+      description: "Single slot available",
+      image: "/image/scientific/ECG.png",
+      id: 4
     },
     {
       day: 1,
-      session: 'Morning',
-      name: 'Disaster Management',
-      price: '₹499/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Disaster_Management.png', // Assuming the image file name for Disaster Management
+      session: "Morning",
+      name: "Disaster Management",
+      price: "₹499/-",
+      description: "Single slot available",
+      image: "/image/scientific/Disaster_Management.png",
+      id: 5
     },
     {
       day: 1,
-      session: 'Afternoon',
-      name: 'BSS 1',
-      price: '₹899/-',
-      description: 'Another slot available',
-      image: '/image/scientific/BSS_1.png', // Assuming the image file name for BSS 1
+      session: "Afternoon",
+      name: "BSS 1",
+      price: "₹899/-",
+      description: "Another slot available",
+      image: "/image/scientific/BSS_1.png",
+      id: 6
     },
     {
       day: 1,
-      session: 'Afternoon',
-      name: 'Opthalmology 1',
-      price: '₹1199/-',
-      description: 'Two more slots available on day 2 and day 3, afternoon',
-      image: '/image/scientific/Opthalmology_1.png', // Assuming the image file name for Opthalmology 1
+      session: "Afternoon",
+      name: "Opthalmology 1",
+      price: "₹1199/-",
+      description: "Two more slots available on day 2 and day 3, afternoon",
+      image: "/image/scientific/Opthalmology_1.png",
+      id: 7
     },
     {
       day: 1,
-      session: 'Afternoon',
-      name: 'ICU 1',
-      price: '₹999/-',
-      description: 'Two more slots available on day 2 and day 3, morning',
-      image: '/image/scientific/ICU_1.png', // Assuming the image file name for ICU 1
+      session: "Afternoon",
+      name: "ICU 1",
+      price: "₹999/-",
+      description: "Two more slots available on day 2 and day 3, morning",
+      image: "/image/scientific/ICU_1.png",
+      id: 8
     },
     {
       day: 1,
-      session: 'Afternoon',
-      name: 'BPCS 2',
-      price: '₹799/-',
-      description: 'Another slot available',
-      image: '/image/scientific/BPCS_2.png', // Assuming the image file name for BPCS 2
+      session: "Afternoon",
+      name: "BPCS 2",
+      price: "₹799/-",
+      description: "Another slot available",
+      image: "/image/scientific/BPCS_2.png",
+      id: 9
     },
     {
       day: 1,
-      session: 'Afternoon',
-      name: 'Poster Presentation',
-      price: '₹99/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Poster_Presentation.png', // Assuming the image file name for Poster Presentation
+      session: "Afternoon",
+      name: "Poster Presentation",
+      price: "₹99/-",
+      description: "Single slot available",
+      image: "/image/scientific/Poster_Presentation.png",
+      id: 10
     },
     {
       day: 1,
-      session: 'Afternoon',
-      name: 'Med Charades',
-      price: '₹99/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Med_Charades.png', // Assuming the image file name for Med Charades
+      session: "Afternoon",
+      name: "Med Charades",
+      price: "₹99/-",
+      description: "Single slot available",
+      image: "/image/scientific/Med_Charades.png",
+      id: 11
     },
     {
       day: 2,
-      session: 'Morning',
-      name: 'Orthopedics 1',
-      price: '₹899/-',
-      description: 'Another slot available on day 3, afternoon',
-      image: '/image/scientific/Orthopedics_1.png', // Assuming the image file name for Orthopedics 1
+      session: "Morning",
+      name: "Orthopedics 1",
+      price: "₹899/-",
+      description: "Another slot available on day 3, afternoon",
+      image: "/image/scientific/Orthopedics_1.png",
+      id: 12
     },
     {
       day: 2,
-      session: 'Morning',
-      name: 'Pulmonology',
-      price: '₹549/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Pulmonology.png', // Assuming the image file name for Pulmonology
+      session: "Morning",
+      name: "Pulmonology",
+      price: "₹549/-",
+      description: "Single slot available",
+      image: "/image/scientific/Pulmonology.png",
+      id: 13
     },
     {
       day: 2,
-      session: 'Morning',
-      name: 'ICU 2',
-      price: '₹999/-',
-      description:
-        'Two more slots available on day 1 afternoon and day 3 morning',
-      image: '/image/scientific/ICU_2.png', // Assuming the image file name for ICU 2
+      session: "Morning",
+      name: "ICU 2",
+      price: "₹999/-",
+      description: "Two more slots available on day 1 afternoon and day 3 morning",
+      image: "/image/scientific/ICU_2.png",
+      id: 14
     },
     {
       day: 2,
-      session: 'Morning',
-      name: 'BSS 2',
-      price: '₹899/-',
-      description: 'Another slot available on day 1, afternoon',
-      image: '/image/scientific/BSS_2.png', // Assuming the image file name for BSS 2
+      session: "Morning",
+      name: "BSS 2",
+      price: "₹899/-",
+      description: "Another slot available on day 1, afternoon",
+      image: "/image/scientific/BSS_2.png",
+      id: 15
     },
     {
       day: 2,
-      session: 'Morning',
-      name: 'Paper Presentation',
-      price: '₹99/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Paper_Presentation.png', // Assuming the image file name for Paper Presentation
+      session: "Morning",
+      name: "Paper Presentation",
+      price: "₹99/-",
+      description: "Single slot available",
+      image: "/image/scientific/Paper_Presentation.png",
+      id: 16
     },
     {
       day: 2,
-      session: 'Morning',
-      name: 'Debate',
-      price: '₹99/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Paper_Presentation.png', // Assuming the image file name for Paper Presentation
+      session: "Morning",
+      name: "Debate",
+      price: "₹99/-",
+      description: "Single slot available",
+      image: "/image/scientific/Debate.png",
+      id: 17
     },
     {
       day: 2,
-      session: 'Afternoon',
-      name: 'WET LAB (Part 1)',
-      price: '₹999/-',
-      description:
-        'This is a single slot workshop covered under two parts on day 2 afternoon and day 3 morning sessions.',
-      image: '/image/scientific/WET_LAB_Part_1.png', // Assuming the image file name for WET LAB (Part 1)
+      session: "Afternoon",
+      name: "WET LAB (Part 1)",
+      price: "₹999/-",
+      description: "This is a single slot workshop covered under two parts on day 2 afternoon and day 3 morning sessions.",
+      image: "/image/scientific/WET_LAB_Part_1.png",
+      id: 18
     },
     {
       day: 2,
-      session: 'Afternoon',
-      name: 'Forensic Medicine',
-      price: '₹399/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Forensic_Medicine.png', // Assuming the image file name for Forensic Medicine
+      session: "Afternoon",
+      name: "Forensic Medicine",
+      price: "₹399/-",
+      description: "Single slot available",
+      image: "/image/scientific/Forensic_Medicine.png",
+      id: 19
     },
     {
       day: 2,
-      session: 'Afternoon',
-      name: 'Opthalmology 2',
-      price: '₹1199/-',
-      description:
-        'Two more slots available on day 1 and day 3 afternoon sessions.',
-      image: '/image/scientific/Opthalmology_2.png', // Assuming the image file name for Opthalmology 2
+      session: "Afternoon",
+      name: "Opthalmology 2",
+      price: "₹1199/-",
+      description: "Two more slots available on day 1 and day 3 afternoon sessions.",
+      image: "/image/scientific/Opthalmology_2.png",
+      id: 20
     },
     {
       day: 2,
-      session: 'Afternoon',
-      name: 'Neonatology',
-      price: '₹499/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Neonatology.png', // Assuming the image file name for Neonatology
+      session: "Afternoon",
+      name: "Neonatology",
+      price: "₹499/-",
+      description: "Single slot available",
+      image: "/image/scientific/Neonatology.png",
+      id: 21
     },
     {
       day: 2,
-      session: 'Afternoon',
-      name: 'Medi Quiz',
-      price: '₹149/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Medi_Quiz.png', // Assuming the image file name for Medi Quiz
+      session: "Afternoon",
+      name: "Medi Quiz",
+      price: "₹149/-",
+      description: "Single slot available",
+      image: "/image/scientific/Medi_Quiz.png",
+      id: 22
     },
     {
       day: 2,
-      session: 'Afternoon',
-      name: 'Pannel Discussion',
-      price: '₹149/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Medi_Quiz.png', // Assuming the image file name for Medi Quiz
+      session: "Afternoon",
+      name: "Pannel Discussion",
+      price: "₹149/-",
+      description: "Single slot available",
+      image: "/image/scientific/Pannel_Discussion.png",
+      id: 23
     },
     {
       day: 3,
-      session: 'Morning',
-      name: 'WET LAB (Part 2)',
-      price: '₹999/-',
-      description:
-        'This is a single slot workshop covered under two parts on day 2 afternoon and day 3 morning sessions.',
-      image: '/image/scientific/WET_LAB_Part_2.png', // Assuming the image file name for WET LAB (Part 2)
+      session: "Morning",
+      name: "WET LAB (Part 2)",
+      price: "₹999/-",
+      description: "This is a single slot workshop covered under two parts on day 2 afternoon and day 3 morning sessions.",
+      image: "/image/scientific/WET_LAB_Part_2.png",
+      id: 24
     },
     {
       day: 3,
-      session: 'Morning',
-      name: 'Oncology',
-      price: '₹599/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Oncology.png', // Assuming the image file name for Oncology
+      session: "Morning",
+      name: "Oncology",
+      price: "₹599/-",
+      description: "Single slot available",
+      image: "/image/scientific/Oncology.png",
+      id: 25
     },
     {
       day: 3,
-      session: 'Morning',
-      name: 'ICU 3',
-      price: '₹999/-',
-      description:
-        'Two more slots available on day 1 afternoon and day 3 morning',
-      image: '/image/scientific/ICU_3.png', // Assuming the image file name for ICU 3
+      session: "Morning",
+      name: "ICU 3",
+      price: "₹999/-",
+      description: "Two more slots available on day 1 afternoon and day 3 morning",
+      image: "/image/scientific/ICU_3.png",
+      id: 26
     },
     {
       day: 3,
-      session: 'Morning',
-      name: 'Gynaecology 2',
-      price: '₹899/-',
-      description: 'Another slot available',
-      image: '/image/scientific/Gynaecology_2.png', // Assuming the image file name for Gynecology 2
+      session: "Morning",
+      name: "Gynaecology 2",
+      price: "₹899/-",
+      description: "Another slot available",
+      image: "/image/scientific/Gynaecology_2.png",
+      id: 27
     },
     {
       day: 3,
-      session: 'Morning',
-      name: 'Case Presentation',
-      price: '₹99/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Case_Presentation.png', // Assuming the image file name for Case Presentation
+      session: "Morning",
+      name: "Case Presentation",
+      price: "₹99/-",
+      description: "Single slot available",
+      image: "/image/scientific/Case_Presentation.png",
+      id: 28
     },
     {
       day: 3,
-      session: 'Afternoon',
-      name: 'Psychiatry',
-      price: '₹299/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Psychiatry.png', // Assuming the image file name for Psychiatry
+      session: "Afternoon",
+      name: "Psychiatry",
+      price: "₹299/-",
+      description: "Single slot available",
+      image: "/image/scientific/Psychiatry.png",
+      id: 29
     },
     {
       day: 3,
-      session: 'Afternoon',
-      name: 'Orthopaedics 2',
-      price: '₹1199/-',
-      description: 'Two more slots available on day 1 and day 3 afternoon',
-      image: '/image/scientific/Orthopaedics_2.png', // Assuming the image file name for Opthalmology 3
+      session: "Afternoon",
+      name: "Orthopaedics 2",
+      price: "₹1199/-",
+      description: "Two more slots available on day 1 and day 3 afternoon",
+      image: "/image/scientific/Orthopaedics_2.png",
+      id: 30
     },
     {
       day: 3,
-      session: 'Afternoon',
-      name: 'Opthalmology 3',
-      price: '₹1199/-',
-      description: 'Two more slots available on day 1 and day 3 afternoon',
-      image: '/image/scientific/Opthalmology_3.png', // Assuming the image file name for Opthalmology 3
+      session: "Afternoon",
+      name: "Opthalmology 3",
+      price: "₹1199/-",
+      description: "Two more slots available on day 1 and day 2 afternoon sessions.",
+      image: "/image/scientific/Opthalmology_3.png",
+      id: 31
     },
     {
       day: 3,
-      session: 'Afternoon',
-      name: 'GI Laporoscopy',
-      price: '₹499/-',
-      description: 'Single slot available',
-      image: '/image/scientific/GI_Laporoscopy.png', // Assuming the image file name for GI Laporoscopy
+      session: "Afternoon",
+      name: "BSS 3",
+      price: "₹899/-",
+      description: "Another slot available on day 1, afternoon",
+      image: "/image/scientific/BSS_3.png",
+      id: 32
     },
     {
       day: 3,
-      session: 'Afternoon',
-      name: 'Medi Hunt',
-      price: '₹99/-',
-      description: 'Single slot available',
-      image: '/image/scientific/Medi_Hunt.png', // Assuming the image file name for Medi Hunt
+      session: "Afternoon",
+      name: "Gynaecology 3",
+      price: "₹899/-",
+      description: "Another slot available",
+      image: "/image/scientific/Gynaecology_3.png",
+      id: 33
+    },
+    {
+      day: 3,
+      session: "Afternoon",
+      name: "Pannel Discussion",
+      price: "₹149/-",
+      description: "Single slot available",
+      image: "/image/scientific/Pannel_Discussion.png",
+      id: 34
     },
   ];
-  // const toggleActivitySelection = (activityId) => {
-  //   let updatedSelectedActivities;
-  //   let updatedTotalAmount = totalAmount;
-
-  //   if (selectedActivities.includes(activityId)) {
-  //     updatedSelectedActivities = selectedActivities.filter(
-  //       (id) => id !== activityId
-  //     );
-  //     updatedTotalAmount -= activities.find(
-  //       (activity) => activity.id === activityId
-  //     ).price;
-  //   } else {
-  //     updatedSelectedActivities = [...selectedActivities, activityId];
-  //     updatedTotalAmount += activities.find(
-  //       (activity) => activity.id === activityId
-  //     ).price;
-  //   }
-
-  //   setSelectedActivities(updatedSelectedActivities);
-  //   setTotalAmount(updatedTotalAmount);
-  // };
+  
   const toggleActivitySelection = (activityId) => {
-    let updatedSelectedActivities = [...selectedActivities];
+    let updatedSelectedActivities;
     let updatedTotalAmount = totalAmount;
 
-    // Check if an activity is already selected for this session
-    const alreadySelectedActivity = selectedActivities.find(
-      (selectedActivity) =>
-        selectedActivity.day === Scientific_activities[activityId].day &&
-        selectedActivity.session === Scientific_activities[activityId].session
-    );
-
-    if (alreadySelectedActivity) {
-      // If an activity is already selected, deselect it
-      updatedSelectedActivities = updatedSelectedActivities.filter(
-        (activity) => activity.id !== alreadySelectedActivity.id
+    if (selectedActivities.includes(activityId)) {
+      updatedSelectedActivities = selectedActivities.filter(
+        (id) => id !== activityId
       );
-      updatedTotalAmount -= alreadySelectedActivity.price;
+      updatedTotalAmount -= activities.find(
+        (activity) => activity.id === activityId
+      ).price;
     } else {
-      // If no activity is selected for this session, select the new activity
-      updatedSelectedActivities.push(activities[activityId]);
-      updatedTotalAmount += activities[activityId].price;
+      updatedSelectedActivities = [...selectedActivities, activityId];
+      updatedTotalAmount += activities.find(
+        (activity) => activity.id === activityId
+      ).price;
     }
 
     setSelectedActivities(updatedSelectedActivities);
     setTotalAmount(updatedTotalAmount);
   };
+  // const toggleActivitySelection = (activityId) => {
+  //   let updatedSelectedActivities = [...selectedActivities];
+  //   let updatedTotalAmount = totalAmount;
+
+  //   // Check if an activity is already selected for this session
+  //   const alreadySelectedActivity = selectedActivities.find(
+  //     (selectedActivity) =>
+  //       selectedActivity.day === Scientific_activities[activityId].day &&
+  //       selectedActivity.session === Scientific_activities[activityId].session
+  //   );
+
+  //   if (alreadySelectedActivity) {
+  //     // If an activity is already selected, deselect it
+  //     updatedSelectedActivities = updatedSelectedActivities.filter(
+  //       (activity) => activity.id !== alreadySelectedActivity.id
+  //     );
+  //     updatedTotalAmount -= alreadySelectedActivity.price;
+  //   } else {
+  //     // If no activity is selected for this session, select the new activity
+  //     updatedSelectedActivities.push(activities[activityId]);
+  //     updatedTotalAmount += activities[activityId].price;
+  //   }
+
+  //   setSelectedActivities(updatedSelectedActivities);
+  //   setTotalAmount(updatedTotalAmount);
+  // };
+  const handleActivityClick = (activity) => {
+    setSelectedActivity(activity);
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedActivity(null);
+  };
+
   //Scentific activites
+  // const renderActivities = () => {
+  //   return Scientific_activities.filter(
+  //     (activity) =>
+  //       activity.day === activeDay && activity.session === activeSession
+  //   ).map((activity) => {
+  //     console.log('activity: ', activity);
+  //     return (
+  //       <div
+  //         key={activity.id}
+  //         className='flex justify-between items-center mb-4 bg-white p-2 rounded-xl'
+  //       >
+  //         <div className='flex items-center'>
+  //           <img
+  //             src={activity.image}
+  //             alt={activity.name}
+  //             className='w-16 h-16 mr-4'
+  //           />
+  //           <div>
+  //             <h3 className='text-lg font-semibold'>{activity.name}</h3>
+  //             <p className='text-sm text-gray-600'>{activity.description}</p>
+  //           </div>
+  //         </div>
+  //         <div className='flex items-center'>
+  //           <span className='text-lg font-bold mr-4'>₹{activity.price}</span>
+  //           <input
+  //             type='checkbox'
+  //             checked={selectedActivities.includes(activity.id)}
+  //             onChange={() => toggleActivitySelection(activity.id)}
+  //             className='form-checkbox h-5 w-5 text-blue-600'
+  //           />
+  //         </div>
+  //       </div>
+  //     );
+  //   });
+  // };
   const renderActivities = () => {
     return Scientific_activities.filter(
       (activity) =>
@@ -390,7 +590,8 @@ const RegisterNowSection = () => {
       return (
         <div
           key={activity.id}
-          className='flex justify-between items-center mb-4 bg-white p-2 rounded-xl'
+          className='flex justify-between items-center mb-4 bg-white p-2 rounded-xl cursor-pointer'
+          onClick={() => handleActivityClick(activity)} // Add onClick to open dialog
         >
           <div className='flex items-center'>
             <img
@@ -408,11 +609,16 @@ const RegisterNowSection = () => {
             <input
               type='checkbox'
               checked={selectedActivities.includes(activity.id)}
-              onChange={() => toggleActivitySelection(activity.id)}
+              onChange={(e) => {
+                e.stopPropagation(); // Prevent click from triggering the dialog
+                toggleActivitySelection(activity.id);
+              }}
               className='form-checkbox h-5 w-5 text-blue-600'
             />
           </div>
+          
         </div>
+        
       );
     });
   };
@@ -740,6 +946,30 @@ const RegisterNowSection = () => {
                   <h2 className='text-xl font-bold mb-4'>{`Day ${activeDay} - ${activeSession} Session`}</h2>
 
                   {renderActivities()}
+                   {/* Dialog Box */}
+      {isDialogOpen && selectedActivity && (
+        <div className='fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50 m-3'>
+          <div className='bg-white p-4 rounded-xl max-w-md w-full'>
+            <h3 className='text-2xl font-semibold mb-4'>{selectedActivity.name}</h3>
+            <img 
+              src={selectedActivity.image}
+              alt={selectedActivity.name}
+              className=' h-40 object-cover mb-4'
+            />
+            <p className='text-gray-700 mb-4'>{selectedActivity.description}</p>
+            <p className='text-gray-600 mb-4'>{selectedActivity.content}</p> {/* Add the specific content for the activity */}
+            <span className='text-lg font-bold'>₹{selectedActivity.price}</span>
+            <div className='mt-4 flex justify-end'>
+              <button
+                onClick={() => setIsDialogOpen(false)}
+                className='bg-blue-600 text-white px-4 py-2 rounded-lg'
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
                   <div className='border-t-2 border-gray-300 pt-4 mt-4 flex justify-between items-center'>
                     <div>
@@ -991,13 +1221,13 @@ const RegisterNowSection = () => {
                     What all are included in basic registration pass?
                   </p>
                   <p className='flex items-center text-2xl font-bold mb-8'>
-                    <span className='text-green-600 mr-2'>✔</span>
+                    <span className='text-green-600 mr-2 pb-1 mb-1'>✔</span>
                     How to register?
                   </p>
                 </div>
               </div>
-              <div className='mt-20 bg-[#1d3459]'>
-                <div className='mt-20 p-5'>
+              <div className=' bg-[#1d3459]'>
+                <div className='mt-2 p-5'>
                   <div>
                     <label
                       htmlFor='college'

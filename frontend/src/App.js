@@ -19,6 +19,8 @@ import Scientific from './components/Scientific';
 import Privacy from './components/Privacy';
 import Terms from './components/Terms';
 import Cancellations from './components/Cancellations';
+import ScrollToTop from './components/ScrollToTop';
+import FAQs from './components/FAQs';
 
 // const yearsOfStudy = [
 //   { value: "2023", label: "2023" },
@@ -184,7 +186,7 @@ function App() {
     // <Router>
     <div>
       <Navbar />
-
+      <ScrollToTop />
       <Routes>
         <Route path='/registration' element={<RegisterNowSection />} />
         <Route path='/payment' element={<Payment />} />
@@ -195,6 +197,8 @@ function App() {
         <Route path='/privacypolicy' element={<Privacy />} />
         <Route path='/terms' element={<Terms />} />
         <Route path='/cancellations' element={<Cancellations />} />
+        <Route path='/faqs' element={<FAQs />} />
+
 
         {/* Add other routes as needed */}
       </Routes>

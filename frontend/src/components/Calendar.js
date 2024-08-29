@@ -18,7 +18,7 @@ const Calendar = () => {
         EVENT HIGHLIGHTS
       </h3>
       <ul className='mb-5'>
-        <li className='flex items-center mb-5'>
+        <li className='flex items-center mb-1'>
           <img
             src='/icons/check.svg'
             alt='Check icon'
@@ -26,7 +26,7 @@ const Calendar = () => {
           />
           Expert-Led Workshops
         </li>
-        <li className='flex items-center mb-5'>
+        <li className='flex items-center mb-1'>
           <img
             src='/icons/check.svg'
             alt='Check icon'
@@ -34,7 +34,7 @@ const Calendar = () => {
           />
           Participation Certificate
         </li>
-        <li className='flex items-center mb-5'>
+        <li className='flex items-center mb-1'>
           <img
             src='/icons/check.svg'
             alt='Check icon'
@@ -42,7 +42,7 @@ const Calendar = () => {
           />
           Scientific Paper Presentations
         </li>
-        <li className='flex items-center mb-5'>
+        <li className='flex items-center mb-1'>
           <img
             src='/icons/check.svg'
             alt='Check icon'
@@ -50,7 +50,7 @@ const Calendar = () => {
           />
           Celebrity Night
         </li>
-        <li className='flex items-center mb-5'>
+        <li className='flex items-center mb-1'>
           <img
             src='/icons/check.svg'
             alt='Check icon'
@@ -58,7 +58,7 @@ const Calendar = () => {
           />
           DJ Night
         </li>
-        <li className='flex items-center mb-5'>
+        <li className='flex items-center mb-1'>
           <img
             src='/icons/check.svg'
             alt='Check icon'
@@ -66,7 +66,7 @@ const Calendar = () => {
           />
           Cultural Performances
         </li>
-        <li className='flex items-center mb-5'>
+        <li className='flex items-center mb-1'>
           <img
             src='/icons/check.svg'
             alt='Check icon'

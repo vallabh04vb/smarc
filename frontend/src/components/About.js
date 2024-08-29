@@ -1,8 +1,10 @@
 import { ChevronDown } from 'lucide-react';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const About = () => {
   const [open, setOpen] = useState(false);
+  const navigate =useNavigate();
   return (
     <div className='bg-[#1D3459]'>
       <div className='flex flex-col items-center justify-center bg-[#1D3459] text-white'>
@@ -20,11 +22,11 @@ const About = () => {
           <img
             src='/image/kims.svg'
             alt='SMARC-2024 Logo'
-            className='w-56 h-56'
+            className='w-56 h-56 '
           />
         </div>
       </div>
-      <div className='flex flex-col items-center justify-center p-8 bg-[#1D3459] text-white'>
+      <div className='flex flex-col items-center justify-center p-8 pt-0 bg-[#1D3459] text-white'>
         <p className='text-base mb-6 text-center'>
           KONASEEMA INSTITUTE OF MEDICAL SCIENCES AND RESEARCH FOUNDATION
           Konaseema Institute of Medical Sciences & Research Foundation, one of
@@ -46,7 +48,7 @@ const About = () => {
               : 'KIMS is the only Super Speciality Hospital in the Konaseema region that dedicates its service in building the future of healthcare industry by serving approximately 214 villages with best medical facilities, contributing to academic wings through an administered educational opportunity and aiding the candidates with resources for research. Situated on the banks of Godavari, this city is on the lap of nature with lovely landscapes, lush paddy fields, meandering canals, swaying coconut and banana plantations. The city, known for its diverse and rich agricultural background will bring you closer to nature and KIMS will bring you to a comprehensive healthcare and sturdy educational environment.'}
           </span>
         </p>
-        <button className='mt-4 bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-orange-400 transition duration-200 flex items-center'>
+        <button className='mt-4 bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-orange-400 transition duration-200 flex items-center' onClick={()=>navigate("./registration")}>
           <span className='mr-2 font-bold'>REGISTER NOW</span>
           <img src='/icons/arrow.svg' alt='' />
         </button>

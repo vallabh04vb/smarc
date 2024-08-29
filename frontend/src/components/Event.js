@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Event = () => {
   const eventData = [
@@ -6,6 +7,7 @@ const Event = () => {
     { category: 'Cultural Events', day1: 3, day2: 2, day3: 2, total: 7 },
     { category: 'Scientific', day1: 2, day2: 2, day3: 2, total: 6 },
   ];
+  const navigate = useNavigate();
 
   return (
     <div className='bg-[#1D3459] flex flex-col items-center justify-center p-6 max-w-md mx-auto text-white'>
@@ -26,7 +28,7 @@ const Event = () => {
         </div>
       </div>
 
-      <table className='w-full mb-6'>
+      {/* <table className='w-full mb-6'>
         <thead>
           <tr className='text-[#F79E32]'>
             <th className='text-left font-normal pb-2'></th>
@@ -48,13 +50,20 @@ const Event = () => {
             </tr>
           ))}
         </tbody>
-      </table>
-      <a href='/'>
+      </table> */}
+      <div>
+        <img
+          src='/image/eventbox.png'
+          alt='SMARC 2024 Banner'
+          className='w-full mb-2'
+        />
+      </div>
+    
         <h3 className='text-[#F79E32] my-2 mb-4 underline'>Quick Links</h3>
-      </a>
+     
 
       <div className='mb-4'>
-        <button className='bg-[#F79E32] text-navy-800 w-full p-3 py-2 rounded-2xl font-bold mb-4 flex items-center justify-center'>
+        <button className='bg-[#F79E32] text-navy-800 w-full p-3 py-2 rounded-2xl font-bold mb-4 flex items-center justify-center' onClick={()=>navigate("./faqs")}>
           <svg
             className='w-5 h-5 mr-2'
             fill='currentColor'
