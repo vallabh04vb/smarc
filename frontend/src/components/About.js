@@ -1,10 +1,68 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const ExpandableSection = () => {
+  const [isFacultyExpanded, setIsFacultyExpanded] = useState(false);
+  const [isOrganizersExpanded, setIsOrganizersExpanded] = useState(false);
+
+  const toggleFaculty = () => setIsFacultyExpanded(!isFacultyExpanded);
+  const toggleOrganizers = () => setIsOrganizersExpanded(!isOrganizersExpanded);
+
+  return (
+    <div className="w-full">
+      {/* Faculty Section */}
+      <h5
+        className="text-md flex justify-center align-middle place-content-center font-bold py-2 my-3 w-full text-center text-[#1D3459] bg-[#e9e9cc] cursor-pointer"
+        onClick={toggleFaculty}
+      >
+        FACULTY
+        {isFacultyExpanded ? <ChevronUp /> : <ChevronDown />}
+      </h5>
+      {isFacultyExpanded && (
+        <div className="bg-white p-4 text-center grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="flex flex-col items-center">
+          <img
+            src="/image/f2.png"
+            alt="Dr. KVV Satyanarayana Raju"
+            className="w-24 h-24 rounded-full mb-2"
+          />
+          <h3 className="text-lg font-semibold">DR KVV SATYANARAYANA RAJU</h3>
+          <p className="text-sm text-gray-600">CHAIRMAN AND FOUNDER CHAITANYA GROUP</p>
+        </div>
+      
+        <div className="flex flex-col items-center">
+          <img
+            src="/image/f3.png"
+            alt="K Ravi Kiran Varma"
+            className="w-24 h-24 rounded-full mb-2"
+          />
+          <h3 className="text-lg font-semibold">K RAVI KIRAN VARAMA</h3>
+          <p className="text-sm text-gray-600">MANAGING DIRECTOR KIMS AND RF</p>
+        </div>
+      
+        <div className="flex flex-col items-center">
+          <img
+            src="/image/f1.png"
+            alt="Dr. Anand Acharya"
+            className="w-24 h-24 rounded-full mb-2"
+          />
+          <h3 className="text-lg font-semibold">DR ANAND ACHARYA</h3>
+          <p className="text-sm text-gray-600">DEAN AND PRINCIPAL KIMS AND RF</p>
+        </div>
+      </div>
+      )}
+
+      {/* Organizers Section */}
+      
+    </div>
+  );
+};
+
 const About = () => {
   const [open, setOpen] = useState(false);
-  const navigate =useNavigate();
+  const navigate = useNavigate();
+
   return (
     <div className='bg-[#1D3459]'>
       <div className='flex flex-col items-center justify-center bg-[#1D3459] text-white'>
@@ -53,14 +111,7 @@ const About = () => {
           <img src='/icons/arrow.svg' alt='' />
         </button>
       </div>
-      <h5 className='text-md flex justify-center align-middle place-content-center font-bold py-2 my-3 w-full text-center text-[#1D3459] bg-[#e9e9cc]'>
-        FACULTY
-        <ChevronDown />
-      </h5>
-      <h5 className='text-md flex justify-center align-middle place-content-center font-bold py-2 w-full text-center text-[#1D3459] bg-[#e9e9cc]'>
-        ORGANIZERS
-        <ChevronDown />
-      </h5>
+      <ExpandableSection />
     </div>
   );
 };
