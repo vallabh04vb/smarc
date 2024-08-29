@@ -14,7 +14,7 @@ const LandingPage = () => {
       <Event />
       <Explore />
       <Calendar />
-      <Pricing />
+      {/* <Pricing /> */}
       <Welcome />
       <About />
       <Footer/>

@@ -100,10 +100,13 @@ const Culturals = () => {
         <p className='mb-4'>Total 14 Culturals</p>
 
         <h3 className='text-lg font-semibold mb-2'>Sit Back and Relax</h3>
-        <p className='mb-6'>
-          In this section, 4 culturals will be covered. An image will be
-          provided which should be kept.
-        </p>
+        <div>
+        <img
+          src='/image/culturals/SR.png'
+          alt='SMARC 2024 Banner'
+          className='w-full'
+        />
+      </div>
 
         <h3 className='text-lg font-semibold mb-2'>Participation</h3>
         <p className='mb-4'>In this section, 10 culturals will be covered.</p>
@@ -126,10 +129,6 @@ const Culturals = () => {
           </div>
         ))}
 
-        <h3 className='text-lg font-bold mb-4'>Previous Event Gallery</h3>
-        <p className='mb-4'>
-          Photos will be provided which can be updated on the go!
-        </p>
       </div>
       <Calendar2 />
       <Footer />

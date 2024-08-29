@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Welcome = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <h5 className='text-md font-bold py-2  w-full text-center text-[#1D3459] bg-[#e9e9cc]'>
@@ -29,7 +31,7 @@ const Welcome = () => {
         <p className='text-base mb-6 text-center font-bold'>
           Click below to Register for the Event
         </p>
-        <button className='mt-4 bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-orange-400 transition duration-200 flex items-center'>
+        <button className='mt-4 bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-orange-400 transition duration-200 flex items-center' onClick={()=>navigate("./registration")}>
           <span className='mr-2 font-bold'>REGISTER NOW</span>
           <img src='/icons/arrow.svg' alt='' />
         </button>

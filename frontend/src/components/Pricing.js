@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   MapPin,
   PlaneTakeoff,
@@ -7,6 +8,7 @@ import {
   ChevronUp,
   CirclePlus,
   CircleMinus,
+  RewindIcon,
 } from 'lucide-react';
 
 const AccordionItem = ({ title, description, isOpen, onClick }) => (
@@ -101,14 +103,15 @@ const Pricing = () => {
       ],
     },
   ];
-
+  const navigate= useNavigate();
   return (
+    
     <div className='bg-[#1D3459] text-white p-6 max-w-md mx-auto'>
       {categories.map((category, index) => (
         <Card key={index} {...category} />
       ))}
       <div className='flex flex-col items-center justify-centerbg-[#1D3459] text-[#ffaa01]'>
-        <button className='mt-6 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-3xl focus:outline-none flex items-center'>
+        <button className='mt-6 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-3xl focus:outline-none flex items-center' onClick={()=>navigate("./registration")}>
           <span className='mr-2'>VIEW PRICING</span>
           <img src='/icons/arrow.svg' alt='' />
         </button>
