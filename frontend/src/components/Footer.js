@@ -11,15 +11,14 @@ const Footer = () => {
             <a href="https://kims.in" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">kims.in</a>
           </p>
           <iframe
-            src="https://maps.app.goo.gl/xKBdtMABEnMCk74a7"
-            width="100%"
-            height="200"
-            className="rounded"
-            title="Event Location"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-          ></iframe>
+            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3823.689689317005!2d82.0235747!3d16.5921202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37efea38c50c33%3A0xc68760bff7c887dc!2sKonaseema%20Inst.%20of%20Medical%20Sciences%20%26%20Research%20Foundation!5e0!3m2!1sen!2sin!4v1724953486232!5m2!1sen!2sin'
+            width='100%'
+            height='200'
+            title='Event Location'
+            allowfullscreen=''
+            loading='lazy'
+            referrerpolicy='no-referrer-when-downgrade'
+          />
         </div>
         
         <div>
