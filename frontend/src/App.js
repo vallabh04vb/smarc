@@ -21,6 +21,9 @@ import Terms from './components/Terms';
 import Cancellations from './components/Cancellations';
 import ScrollToTop from './components/ScrollToTop';
 import FAQs from './components/FAQs';
+import CulturalActivities from './components/CulturalActivities';
+import RegisterLayout from './components/RegisterLayout';
+import ScientificActivities from './components/ScientificActivities';
 
 // const yearsOfStudy = [
 //   { value: "2023", label: "2023" },
@@ -188,7 +191,11 @@ function App() {
       <Navbar />
       <ScrollToTop />
       <Routes>
-        <Route path='/registration' element={<RegisterNowSection />} />
+        <Route path='/registration' element={<RegisterLayout />}>
+          <Route index element={<RegisterNowSection />} />
+          <Route path='culturals' element={<CulturalActivities />} />
+          <Route path='scientific' element={<ScientificActivities />} />
+        </Route>
         <Route path='/payment' element={<Payment />} />
         <Route path='/' element={<LandingPage />} />
         <Route path='/workshops' element={<Workshop />} />
@@ -198,7 +205,6 @@ function App() {
         <Route path='/terms' element={<Terms />} />
         <Route path='/cancellations' element={<Cancellations />} />
         <Route path='/faqs' element={<FAQs />} />
-
 
         {/* Add other routes as needed */}
       </Routes>
