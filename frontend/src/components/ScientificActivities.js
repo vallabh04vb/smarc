@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 import { Scientific_activities } from '../data/colleges';
 import { useNavigate } from 'react-router-dom';
 
 const ScientificActivities = () => {
-  const { totalAmount, setTotalAmount } = useContext(GlobalContext);
+  const { totalAmount, setTotalAmount, cart, setCart } =
+    useContext(GlobalContext);
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [selectedActivities, setSelectedActivities] = useState([]);
   const [activeDay, setActiveDay] = useState(1);
@@ -12,56 +13,43 @@ const ScientificActivities = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const navigate = useNavigate();
 
+  const BASE_FARE = 1199; // Base fare
+
+  useEffect(() => {
+    // Ensure totalAmount has a minimum base fare
+    if (totalAmount < BASE_FARE) {
+      setTotalAmount(BASE_FARE);
+    }
+  }, [totalAmount, setTotalAmount]);
+
   const toggleActivitySelection = (activityId) => {
-    let updatedSelectedActivities = [...selectedActivities];
-    let updatedTotalAmount = totalAmount;
+    let updatedSelectedActivities;
+    let updatedTotalAmount = totalAmount; // Start with the current total amount
+    let updatedCart = [...cart];
 
-    // Check if the activity is already selected
-    const isAlreadySelected = updatedSelectedActivities.includes(activityId);
+    const activity = Scientific_activities.find(
+      (activity) => activity.id === activityId
+    );
 
-    if (isAlreadySelected) {
-      // Unselecting the activity
-      updatedSelectedActivities = updatedSelectedActivities.filter(
+    if (selectedActivities.includes(activityId)) {
+      updatedSelectedActivities = selectedActivities.filter(
         (id) => id !== activityId
       );
-      updatedTotalAmount -= Scientific_activities.find(
-        (activity) => activity.id === activityId
-      ).price;
+      // Remove from cart
+      updatedCart = updatedCart.filter((item) => item.id !== activityId);
+      // Deduct the price of the deselected activity
+      updatedTotalAmount -= activity.price;
     } else {
-      // Selecting the activity
-      // Remove previously selected activity for the same day and session
-      updatedSelectedActivities = updatedSelectedActivities.filter(
-        (activityId) => {
-          const activity = Scientific_activities.find(
-            (act) => act.id === activityId
-          );
-          return !(
-            activity.day === activeDay && activity.session === activeSession
-          );
-        }
-      );
-      updatedTotalAmount -= updatedSelectedActivities.reduce(
-        (acc, activityId) => {
-          const activity = Scientific_activities.find(
-            (act) => act.id === activityId
-          );
-          return activity.day === activeDay &&
-            activity.session === activeSession
-            ? acc + activity.price
-            : acc;
-        },
-        0
-      );
-
-      // Add the new activity
-      updatedSelectedActivities.push(activityId);
-      updatedTotalAmount += Scientific_activities.find(
-        (activity) => activity.id === activityId
-      ).price;
+      updatedSelectedActivities = [...selectedActivities, activityId];
+      // Add to cart
+      updatedCart = [...updatedCart, activity];
+      // Add the price of the selected activity
+      updatedTotalAmount += activity.price;
     }
 
     setSelectedActivities(updatedSelectedActivities);
     setTotalAmount(updatedTotalAmount);
+    setCart(updatedCart);
   };
 
   const handleActivityClick = (activity) => {
@@ -89,7 +77,12 @@ const ScientificActivities = () => {
               className='w-16 h-16 mr-4'
             />
             <div>
-              <h3 className='text-lg font-semibold'>{activity.name}</h3>
+              <h3 className='text-lg font-semibold'>
+                {activity.name}
+                <span className='text-sm text-red-500'>
+                  {activity.disabled && '(Out of Stock!)'}
+                </span>
+              </h3>
               <p className='text-sm text-gray-600'>{activity.description}</p>
             </div>
           </div>
@@ -102,6 +95,7 @@ const ScientificActivities = () => {
                 e.stopPropagation(); // Prevent click from triggering the dialog
                 toggleActivitySelection(activity.id);
               }}
+              disabled={activity.disabled}
               className='form-checkbox h-5 w-5 text-blue-600'
             />
           </div>
@@ -166,14 +160,39 @@ const ScientificActivities = () => {
                 </button>
               </div>
             </div>
-
             <h2 className='text-xl font-bold mb-4'>{`Day ${activeDay} - ${activeSession} Session`}</h2>
-
+            {activeDay === 1 && activeSession === 'Morning' ? (
+              <>
+                <span className='pb-2'>
+                  *Please select only 1 activity from below
+                </span>
+              </>
+            ) : (
+              <></>
+            )}
+            {activeDay === 2 && activeSession === 'Afternoon' ? (
+              <>
+                <span className='pb-2'>
+                  *Please select only 1 activity from below
+                </span>
+              </>
+            ) : (
+              <></>
+            )}
+            {activeDay === 3 && activeSession === 'Afternoon' ? (
+              <>
+                <span className='pb-2'>
+                  *Please select only 1 activity from below
+                </span>
+              </>
+            ) : (
+              <></>
+            )}
             {renderActivities()}
             {/* Dialog Box */}
             {isDialogOpen && selectedActivity && (
-              <div className='fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50 m-3'>
-                <div className='bg-white p-4 rounded-xl max-w-md w-full'>
+              <div className='fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50 m-3 mt-24 overflow-y-scroll '>
+                <div className='bg-white p-4 rounded-xl max-w-md w-full mt-24 overflow-scroll'>
                   <h3 className='text-2xl font-semibold mb-4'>
                     {selectedActivity.name}
                   </h3>
@@ -203,12 +222,11 @@ const ScientificActivities = () => {
                 </div>
               </div>
             )}
-
             {/* Added Proceed to Pay button */}
             <div className='mt-8 text-center'>
               <button
                 className='bg-yellow-500 text-blue-900 font-bold px-8 py-2 rounded-lg shadow-md'
-                onClick={() => navigate('/payment')}
+                onClick={() => navigate('/registration/cart')}
               >
                 NEXT
               </button>

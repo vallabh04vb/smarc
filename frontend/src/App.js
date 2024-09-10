@@ -24,6 +24,8 @@ import FAQs from './components/FAQs';
 import CulturalActivities from './components/CulturalActivities';
 import RegisterLayout from './components/RegisterLayout';
 import ScientificActivities from './components/ScientificActivities';
+import Cart from './components/Cart';
+import PaymentConfirmationPage from './components/PaymentConfirmation';
 
 // const yearsOfStudy = [
 //   { value: "2023", label: "2023" },
@@ -195,6 +197,11 @@ function App() {
           <Route index element={<RegisterNowSection />} />
           <Route path='culturals' element={<CulturalActivities />} />
           <Route path='scientific' element={<ScientificActivities />} />
+          <Route path='cart' element={<Cart />} />
+          <Route
+            path='paymentconfirmation'
+            element={<PaymentConfirmationPage />}
+          />
         </Route>
         <Route path='/payment' element={<Payment />} />
         <Route path='/' element={<LandingPage />} />

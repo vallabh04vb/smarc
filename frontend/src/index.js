@@ -4,18 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GlobalProvider } from './context/GlobalContext';
-import {
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
+import ReactGA from 'react-ga4';
+ReactGA.initialize('G-734BRJ77C7');
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <GlobalProvider>
-   <Router>
-    <App />
-   </Router>
-
-  </GlobalProvider>
+    <GlobalProvider>
+      <Router>
+        <App />
+      </Router>
+    </GlobalProvider>
   </React.StrictMode>
 );
 

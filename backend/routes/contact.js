@@ -6,20 +6,25 @@ router.post('/', async (req, res) => {
   const {
     name,
     email,
-    message,
     college,
     yearOfStudy,
     gender,
+    profession,
+    apmc,
+    amount,
+    current,
+    accommodation,
     dateOfBirth,
+    cart,
     whatsappNumber,
     ip,
+    referral,
   } = req.body;
-
+  console.log(req.body);
   if (
     !name ||
     !email ||
-    !college ||
-    !yearOfStudy ||
+    !profession ||
     !gender ||
     !dateOfBirth ||
     !whatsappNumber
@@ -35,16 +40,23 @@ router.post('/', async (req, res) => {
       college,
       yearOfStudy,
       gender,
+      profession,
+      apmc,
+      amount,
+      current,
+      cart,
+      accommodation,
       dateOfBirth,
       whatsappNumber,
       ip,
+      referral,
     });
 
     await newContact.save();
 
     res.status(200).json({ message: 'Contact form submitted successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error' + error });
   }
 });
 

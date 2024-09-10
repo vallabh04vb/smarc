@@ -46,6 +46,8 @@ const RegisterNowSection = () => {
     console.log(e.value);
     if (e.value === 'Student') {
       navigate('/registration/culturals');
+    } else if (e.value === 'Doctor') {
+      setTotalAmount(2499);
     }
     setProfession(e.value);
   };
@@ -62,7 +64,7 @@ const RegisterNowSection = () => {
           ) : (
             <div>
               <div className='mt-24 p-6 font-sans bg-[#1d3459]'>
-                <a href='/registration' className='no-underline'>
+                <span className='text-blue-600 no-underline'>
                   <RegistrationPass
                     forGroup='students'
                     title='Student Pass'
@@ -70,8 +72,8 @@ const RegisterNowSection = () => {
                     description='Registered students can select workshops, scientific activities and cultural activities'
                     icon={BookOpen}
                   />
-                </a>
-                <a href='/registration' className='no-underline'>
+                </span>
+                <span className='text-blue-600 no-underline'>
                   <RegistrationPass
                     forGroup='doctors'
                     title='Doctor Pass'
@@ -79,11 +81,37 @@ const RegisterNowSection = () => {
                     description='6 APMC credit hours are earned for registered doctors'
                     icon={Stethoscope}
                   />
-                </a>
+                </span>
               </div>
-              <h2 className='text-2xl p-3 text-[#1d3459] text-center font-semibold bg-[#F79E32]'>
+              <h2 className='text-2xl p-3 mb-0 text-[#1d3459] text-center font-semibold bg-[#F79E32]'>
                 Register for SMARC
               </h2>
+              <div className='bg-[#1d3459] pb-4'>
+                <div className='p-2 pt-4'>
+                  <h2 className='text-2xl p-1 text-gray-200 text-center font-semibold'>
+                    Select your category and proceed to further registration
+                  </h2>
+                  <div>
+                    <label
+                      htmlFor='college'
+                      className='block text-md font-medium text-gray-300 '
+                    >
+                      Are you a ?
+                    </label>
+                    <Select
+                      name='profession'
+                      id='profession'
+                      options={professionOptions}
+                      value={profession}
+                      onChange={(e) => handleSelect(e)}
+                      className='mt-1 text-gray-800 block w-100'
+                      placeholder='Select your profession'
+                      isSearchable
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
               <div className='p-4'>
                 {/* <h3 className='text-lg font-semibold mb-2'>Sub heading-1</h3> */}
                 <h3 className='text-xl font-semibold mb-2'>
@@ -173,29 +201,6 @@ const RegisterNowSection = () => {
                     <span className='text-green-600 mr-2 pb-1 mb-1'>✔</span>
                     How to register?
                   </p>
-                </div>
-              </div>
-              <div className=' bg-[#1d3459]'>
-                <div className='mt-2 p-5'>
-                  <div>
-                    <label
-                      htmlFor='college'
-                      className='block text-sm font-medium text-gray-800 text-white'
-                    >
-                      Are you a ?
-                    </label>
-                    <Select
-                      name='profession'
-                      id='profession'
-                      options={professionOptions}
-                      value={profession}
-                      onChange={(e) => handleSelect(e)}
-                      className='mt-1 text-gray-800 block w-100'
-                      placeholder='Select your profession'
-                      isSearchable
-                      required
-                    />
-                  </div>
                 </div>
               </div>
             </div>

@@ -2,15 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Event = () => {
-  const eventData = [
-    { category: 'Workshops', day1: 5, day2: 5, day3: 4, total: 14 },
-    { category: 'Cultural Events', day1: 3, day2: 2, day3: 2, total: 7 },
-    { category: 'Scientific', day1: 2, day2: 2, day3: 2, total: 6 },
-  ];
   const navigate = useNavigate();
 
   return (
-    <div className='bg-[#1D3459] flex flex-col items-center justify-center p-6 max-w-md mx-auto text-white'>
+    <div className='bg-[#1D3459] flex flex-col items-center justify-center p-6  mx-auto text-white'>
       <h2 className='text-2xl font-bold text-[#F79E32] mb-4'>EVENT OVERVIEW</h2>
 
       <div className='mb-6'>
@@ -58,12 +53,14 @@ const Event = () => {
           className='w-full mb-2'
         />
       </div>
-    
-        <h3 className='text-[#F79E32] my-2 mb-4 underline'>Quick Links</h3>
-     
+
+      <h3 className='text-[#F79E32] my-2 mb-4 underline'>Quick Links</h3>
 
       <div className='mb-4'>
-        <button className='bg-[#F79E32] text-navy-800 w-full p-3 py-2 rounded-2xl font-bold mb-4 flex items-center justify-center' onClick={()=>navigate("./faqs")}>
+        <button
+          className='bg-[#F79E32] text-navy-800 w-full p-3 py-2 rounded-2xl font-bold mb-4 flex items-center justify-center'
+          onClick={() => navigate('./faqs')}
+        >
           <svg
             className='w-5 h-5 mr-2'
             fill='currentColor'
